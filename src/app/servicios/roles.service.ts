@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
+  constructor(private _http: HttpClient) { }
 
-  constructor() { }
+  getAllRoles() {
+    return this._http.get(`http://apiventas4a.com/roles_permissions`);
+  }
 }

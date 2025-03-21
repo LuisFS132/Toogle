@@ -1,1 +1,30 @@
-<p>comentarios works!</p>
+<div class="container mt-4">
+    <h2>Comentarios</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Post ID</th>
+                <th>Usuario</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (comentario of comentarios; track comentario.id) {
+            <tr>
+                <td>{{comentario.id}}</td>
+                <td>{{comentario.post_id}}</td>
+                <td>{{comentario.user_id}}</td>
+                <td>{{comentario.content}}</td>
+                <td>{{comentario.created_at}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2">Editar</button>
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
