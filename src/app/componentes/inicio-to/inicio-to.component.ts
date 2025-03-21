@@ -1,27 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { InicioToService } from '../../servicios/inicio-to.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-inicio-to',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './inicio-to.component.html',
   styleUrl: './inicio-to.component.css'
 })
 export class InicioToComponent implements OnInit {
+  resp: any = {};
+  posts: any[] = [];
 
-  resp : any = {};
-
-  posts : any[] = [];
-
-  constructor(private _servPosts : InicioToService, private _router: Router){
-
-  }
+  constructor(private _servPosts: InicioToService, private _router: Router) {}
 
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
     this._servPosts.getAllPosts().subscribe(
-      (respuesta)=>{
+      (respuesta) => {
         this.resp = respuesta;
         this.posts = this.resp["result"];
         console.log(this.posts);
@@ -29,4 +26,13 @@ export class InicioToComponent implements OnInit {
     );
   }
 
+  buscarPost(termino: string) {
+    if (termino.trim().length > 0) {
+      this._router.navigate(['/buscar-post', termino]);
+    }
+  }
+
+  verPost(idx: number) {
+    this._router.navigate(['/buscar-post', idx]);
+  }
 }

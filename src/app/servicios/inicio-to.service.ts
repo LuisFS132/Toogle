@@ -12,4 +12,11 @@ export class InicioToService {
     return this._http.get(`http://apiventas4a.com/posts`);
   }
 
+  getUnPost(idx: number){
+    return this._http.get(`http://apiventas4a.com/posts?select=*&where=id=${idx}`);
+  }
+
+  buscarPost(valor: string){
+    return this._http.get(`http://apiventas4a.com/posts?select=*&where=id=${valor}`);
+  }
 }

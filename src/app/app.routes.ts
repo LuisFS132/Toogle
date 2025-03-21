@@ -4,6 +4,7 @@ import { LikesComponent } from './componentes/likes/likes.component';
 import { ComentariosComponent } from './componentes/comentarios/comentarios.component';
 import { RolesComponent } from './componentes/roles/roles.component';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { InicioToIdComponent } from './componentes/inicio-to-id/inicio-to-id.component';
 
 export const routes: Routes = [
 
@@ -26,6 +27,14 @@ export const routes: Routes = [
     {
         path: 'usuarios',
         component : UsuariosComponent
+    },
+    {
+        path: 'buscar-post/:valor',
+        component : InicioToIdComponent
+    },
+    {
+        path: 'post/:id',
+        component : InicioToIdComponent
     },
     {
         path: '',
