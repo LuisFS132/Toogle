@@ -1,1 +1,28 @@
-<p>roles works!</p>
+<div class="container mt-4">
+    <h2>Roles</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>¿Puede crear post?</th>
+                <th>¿Puede eliminar post?</th>
+                <th>¿Puede gestionar usuarios?</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (role of roles; track role.id) {
+            <tr>
+                <td>{{role.id}}</td>
+                <td>{{role.role_name}}</td>
+                <td>{{role.can_create_post}}</td>
+                <td>{{role.can_delete_post}}</td>
+                <td>{{role.can_manage_users}}</td>
+                <button class="btn btn-primary btn-sm me-2">Editar</button>
+                <button class="btn btn-danger btn-sm">Eliminar</button>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,1 +1,27 @@
-<p>likes works!</p>
+<div class="container mt-4">
+    <h2>Likes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Post ID</th>
+                <th>Usuario</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (like of likes; track like.id) {
+            <tr>
+                <td>{{like.id}}</td>
+                <td>{{like.post_id}}</td>
+                <td>{{like.user_id}}</td>
+                <td>{{like.created_at}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
