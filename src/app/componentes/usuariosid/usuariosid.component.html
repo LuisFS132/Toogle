@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col">
+        <h2>Resultados de la búsqueda</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let usuario of resultado">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Usuario: {{usuario.email}}</h5>
+                        <p class="card-text">{{usuario.password}}</p>
+                        <p class="card-text">{{usuario.social_id}}</p>
+                        <p class="card-text">{{usuario.provider}}</p>
+                        <p class="card-text">{{usuario.full_name}}</p>
+                        <p class="card-text">{{usuario.profile_picture}}</p>
+                        <p class="card-text">{{usuario.role}}</p>
+                        <p class="card-text"><small class="text-muted">{{usuario.created_at}}</small></p>
+                        <button class="btn btn-primary" (click)="regresar()">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!resultado || resultado.length === 0" class="alert alert-info mt-3">
+            No se encontraron usuarios
+        </div>
+    </div>
+</div>

@@ -17,16 +17,22 @@ export class ComentariosComponent implements OnInit {
   constructor(private _servComentarios: ComentariosService, private _router: Router) {}
 
   ngOnInit(): void {
-    this.loadComentarios();
-  }
-
-  loadComentarios() {
-    this._servComentarios.getAllComments().subscribe(
+    this._servComentarios.getAllComentarios().subscribe(
       (respuesta) => {
         this.resp = respuesta;
         this.comentarios = this.resp["result"];
         console.log(this.comentarios);
       }
     );
+  }
+
+  buscarComentario(termino: string) {
+    if (termino.trim().length > 0) {
+      this._router.navigate(['/buscar-comentario', termino]);
+    }
+  }
+
+  verComentario(idx: number) {
+    this._router.navigate(['/buscar-comentario', idx]);
   }
 }

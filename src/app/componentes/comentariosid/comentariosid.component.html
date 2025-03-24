@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col">
+        <h2>Resultados de la búsqueda</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let comentario of resultado">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Usuario: {{comentario.post_id}}</h5>
+                        <p class="card-text">{{comentario.user_id}}</p>
+                        <p class="card-text">{{comentario.content}}</p>
+                        <p class="card-text"><small class="text-muted">{{comentario.created_at}}</small></p>
+                        <button class="btn btn-primary" (click)="regresar()">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!resultado || resultado.length === 0" class="alert alert-info mt-3">
+            No se encontraron comentarios
+        </div>
+    </div>
+</div>
