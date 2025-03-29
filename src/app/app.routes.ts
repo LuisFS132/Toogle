@@ -9,6 +9,7 @@ import { LikesidComponent } from './componentes/likesid/likesid.component';
 import { ComentariosidComponent } from './componentes/comentariosid/comentariosid.component';
 import { RolesidComponent } from './componentes/rolesid/rolesid.component';
 import { UsuariosidComponent } from './componentes/usuariosid/usuariosid.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 export const routes: Routes = [
 
@@ -71,6 +72,10 @@ export const routes: Routes = [
     {
         path: 'post/:id',
         component : InicioToIdComponent
+    },
+    {
+        path: 'login',
+        component : LoginComponent
     },
     {
         path: '',
