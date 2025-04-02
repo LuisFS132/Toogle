@@ -12,6 +12,7 @@ import { RolesidComponent } from './componentes/rolesid/rolesid.component';
 import { UsuariosidComponent } from './componentes/usuariosid/usuariosid.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { TPremiumComponent } from './componentes/t-premium/t-premium.component';
 
 export const routes: Routes = [
 
@@ -97,6 +98,11 @@ export const routes: Routes = [
     {
         path: 'registro',
         component : RegistroComponent
+    },
+    {
+        path: 'premium',
+        canActivate: [AuthGuard],
+        component : TPremiumComponent
     },
     {
         path: '',
