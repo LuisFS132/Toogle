@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="center-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="container">
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="'password'" formControlName="password">
+            </mat-form-field>
+        </div>
+
+        <div class="example-button-row">
+            <button mat-flat-button color="primary" type="submit">Log In</button>
+        </div>
+    </form>
+</div>
+
+<div class="center-container">
+    <button mat-flat-button type="button" (click)="onClickGoogle()">Log In With Google</button>
+    <a href="/registro">You don't have an account? Register</a>
+</div>
