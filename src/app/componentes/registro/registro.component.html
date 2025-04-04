@@ -1,17 +1,43 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="container">
-        <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="email" formControlName="email">
-        </mat-form-field>
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Join us today! Please enter your details</p>
+        </div>
 
-        <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="'password'" formControlName="password">
-        </mat-form-field>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter your email" formControlName="email">
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+                </mat-form-field>
 
-        <div class="example-button-row">
-            <button mat-flat-button type="submit">Register</button>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="'password'" placeholder="Create a password" formControlName="password">
+                    <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 6 characters</mat-error>
+                </mat-form-field>
+
+                <button mat-flat-button color="primary" class="auth-button" type="submit" [disabled]="!form.valid">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <button mat-flat-button class="google-button" type="button" (click)="onClickGoogle()">
+            <img src="google.ico" alt="Google" width="24" height="24">
+            Sign up with Google
+        </button>
+
+        <div class="auth-link">
+            <a routerLink="/login">Already have an account? Log in</a>
         </div>
     </div>
-</form>
+</div>
