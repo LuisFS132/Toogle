@@ -14,6 +14,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { TPremiumComponent } from './componentes/t-premium/t-premium.component';
 
+
 export const routes: Routes = [
 
     {

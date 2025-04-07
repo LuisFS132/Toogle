@@ -33,12 +33,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #364ec7 0%, #89992c 100%);
     padding: 20px;
 }
 
 .auth-card {
-    background: white;
+    background: rgb(47, 43, 43);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -52,13 +52,13 @@ a {
 }
 
 .auth-header h1 {
-    color: #333;
+    color: #0060f0;
     font-size: 28px;
     margin-bottom: 10px;
 }
 
 .auth-header p {
-    color: #666;
+    color: #ffffff;
     font-size: 16px;
 }
 
@@ -131,4 +131,8 @@ mat-form-field {
 
 .auth-link a:hover {
     text-decoration: underline;
+}
+
+mat-label {
+    color:#ffffff;
 }

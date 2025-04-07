@@ -21,7 +21,7 @@ export class NavegacionComponent {
       this.router.navigate(['/login']) // redirige a la pagina de login
     })
     .catch(error => console.log('Error al cerrar sesión:', error)); // muestra un error si no se puede cerrar sesion
-     
+
   } // fin de la funcion logOut
 
 }
