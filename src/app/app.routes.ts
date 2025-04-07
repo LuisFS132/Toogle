@@ -68,21 +68,6 @@ export const routes: Routes = [
         component : RolesidComponent
     },
     {
-        path: 'usuarios',
-        canActivate: [AuthGuard],
-        component : UsuariosComponent
-    },
-    {
-        path: 'usuarios/:id',
-        canActivate: [AuthGuard],
-        component : UsuariosidComponent
-    },
-    {
-        path: 'buscar-usuario/:valor',
-        canActivate: [AuthGuard],
-        component : UsuariosidComponent
-    },
-    {
         path: 'buscar-post/:valor',
         canActivate: [AuthGuard],
         component : InicioToIdComponent

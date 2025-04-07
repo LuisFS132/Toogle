@@ -1,0 +1,39 @@
+<div>
+    {{formProducto.value|json}}
+</div>
+
+<form #formProducto="ngForm" align="center">
+
+    <!-- 
+        Diseñar el formulario para recoger la información de un producto
+        nombre, descripcion, precio, cantidad
+     -->
+
+    <div class="mb-3" align="center">
+        <div class="col-sm-4">
+            <label for="nombre" class="form-label">Nombre: </label>
+            <input type="text" class="form-control" id="nombre" name="nombre" ngModel placeholder="Nombre del Producto">
+        </div>
+    </div>
+    <div class="mb-3" align="center">
+        <div class="col-sm-4">
+            <label for="descripcion" class="form-label">Descripcion: </label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" ngModel placeholder="Descripcion del Producto">
+        </div>
+    </div>
+    <div class="mb-3" align="center">
+        <div class="col-sm-4">
+            <label for="precio" class="form-label">Precio: </label>
+            <input type="number" class="form-control" id="precio" name="precio" ngModel placeholder="Precio del Producto">
+        </div>
+    </div>
+    <div class="mb-3" align="center">
+        <div class="col-sm-4">
+            <label for="cantidad" class="form-label">Cantidad: </label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" ngModel placeholder="Cantidad de Producto">
+        </div>
+    </div>
+
+
+    <button class="button" type="button" (click)="guardar(formProducto.value)">Guardar</button>
+</form>
