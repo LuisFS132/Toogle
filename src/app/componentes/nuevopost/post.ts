@@ -1,22 +1,11 @@
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-
+import { NuevopostComponent } from "./nuevopost.component";
 export class Post{
 
-    uid: string | null = null;
-  displayName: string | null = null;
-  photoURL: string | null = null;
-
     constructor(
+        public uid: string,
         public content: string,
         public image_url: string,
-        private afAuth: AngularFireAuth
-    ){this.afAuth.authState.subscribe(user => {
-        if (user) {
-          this.uid = user.uid;
-          this.displayName = user.displayName;
-          this.photoURL = user.photoURL;
-        }
-      });
+    ){
     }
 
     toString(){

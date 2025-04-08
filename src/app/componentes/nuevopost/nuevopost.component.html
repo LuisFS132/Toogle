@@ -17,11 +17,10 @@
     </div>
     <div class="mb-3" align="center">
         <div class="col-sm-4">
-            <label for="image_url" class="form-label">URL de la imagen: </label>
-            <input type="url" class="form-control" id="image_url" name="image_url" ngModel placeholder="https://ejemplo.com/imagen.jpg">
+            <label for="image_url" class="form-label"> </label>
+            <input type="file" class="form-control" id="image_url" name="image_url" (change)="onFileSelected($event)" accept="image/*" ngModel>
         </div>
     </div>
-
 
     <button class="button" type="button" (click)="guardar(formProducto.value)">Guardar</button>
 </form>
