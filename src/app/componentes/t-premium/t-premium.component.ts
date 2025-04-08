@@ -22,10 +22,11 @@ export class TPremiumComponent implements OnInit {
     if (window.paypal) {
       window.paypal.Buttons({
         style: {
-          shape: 'pill',
-          color: 'blue',
+          shape: 'rect',
+          color: 'gold',
           layout: 'vertical',
-          label: 'subscribe'
+          label: 'subscribe',
+          height: 45
         },
         createSubscription: function(data: any, actions: any) {
           return actions.subscription.create({
