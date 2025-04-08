@@ -1,0 +1,35 @@
+<div class="card mt-3">
+    <div class="card-body">
+    <!-- Sección de Likes -->
+    <div class="likes-section mb-3">
+        <h6>Likes: {{ likes.length }}</h6>
+        <button 
+        class="btn btn-sm btn-outline-primary" 
+        (click)="toggleLike()"
+        >
+        {{ yaDiLike ? '❤️ Quitar like' : '🤍 Dar like' }}
+        </button>
+    </div>
+
+    <!-- Sección de Comentarios -->
+    <div class="comentarios-section">
+        <h6>Comentarios ({{ comentarios.length }})</h6>
+        <div class="mb-3">
+        <textarea 
+            class="form-control" 
+            [(ngModel)]="nuevoComentario" 
+            placeholder="Escribe un comentario..."></textarea>
+        <button class="btn btn-sm btn-primary mt-2" (click)="agregarComentario()">
+            Comentar
+        </button>
+        </div>
+
+        <!-- Lista de comentarios -->
+        <div class="list-group">
+        <div class="list-group-item" *ngFor="let comentario of comentarios">
+            <strong>{{ comentario.user_id }}</strong>: {{ comentario.content }}
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
