@@ -15,12 +15,6 @@
             <input type="text" class="form-control" id="content" name="content" ngModel placeholder="Publicación">
         </div>
     </div>
-    <div class="mb-3" align="center">
-        <div class="col-sm-4">
-            <label for="image_url" class="form-label"> </label>
-            <input type="file" class="form-control" id="image_url" name="image_url" (change)="onFileSelected($event)" accept="image/*" ngModel>
-        </div>
-    </div>
 
     <button class="button" type="button" (click)="guardar(formProducto.value)">Guardar</button>
 </form>
