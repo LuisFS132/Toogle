@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Post } from '../componentes/nuevopost/post';
 
 const httpOptions = {
@@ -19,19 +20,16 @@ export class InicioToService {
     return this._http.get(`http://apiventas4a.com/posts`);
   }
 
-  getUnPost(idx: number) {
+  getUnPost(idx: number){
     return this._http.get(`http://apiventas4a.com/posts?select=*&where=id=${idx}`);
   }
 
-  buscarPost(valor: string) {
+  buscarPost(valor: string){
     return this._http.get(`http://apiventas4a.com/posts?select=*&where=id=${valor}`);
   }
 
-  nuevoPost(newpost: Post) {
-    const body = new URLSearchParams();
-    body.set('user_id', newpost.uid);
-    body.set('content', newpost.content);
-    body.set('image_url', newpost.image_url);
-    return this._http.post(`http://apiventas4a.com/posts`, body.toString(), httpOptions);
+  nuevoPost(newpost: Post){ 
+    return this._http.post(`http://apiventas4a.com/posts`, newpost.toString(),{headers:httpOptions.headers});
   }
+
 }

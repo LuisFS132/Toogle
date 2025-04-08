@@ -1,0 +1,122 @@
+.post-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.post-content {
+    margin-bottom: 15px;
+}
+
+.content-input {
+    width: 100%;
+    border: none;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.content-input:focus {
+    outline: none;
+    background: #fff;
+    box-shadow: 0 0 0 2px #e1e4e8;
+}
+
+.file-upload-container {
+    margin-bottom: 15px;
+}
+
+.file-upload-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #f0f2f5;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.file-upload-label:hover {
+    background: #e4e6e9;
+}
+
+.file-upload-label i {
+    margin-right: 8px;
+}
+
+.file-input {
+    display: none;
+}
+
+.selected-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #f0f2f5;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.remove-file {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.remove-file:hover {
+    color: #dc3545;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-button {
+    background: #1877f2;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.post-button:hover {
+    background: #166fe5;
+}
+
+.post-button:disabled {
+    background: #e4e6e9;
+    cursor: not-allowed;
+}
