@@ -22,6 +22,11 @@ export class NavegacionComponent {
   router = inject(Router); // inyecta el router
 
   logOut() { // funcion que se ejecuta al hacer click en el boton de logout
+    // Limpiar datos inmediatamente
+    this.uid = null;
+    this.displayName = null;
+    this.photoURL = null;
+    
     this.AuthGoogleService.logLogout()
     .then(()=> {
       this.router.navigate(['/login']) // redirige a la pagina de login
@@ -36,6 +41,11 @@ export class NavegacionComponent {
         this.uid = user.uid;
         this.displayName = user.displayName;
         this.photoURL = user.photoURL;
+      } else {
+        // Limpiar datos cuando no hay usuario
+        this.uid = null;
+        this.displayName = null;
+        this.photoURL = null;
       }
     });
   }

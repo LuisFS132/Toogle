@@ -1,4 +1,71 @@
 nav.navbar {
-    background: linear-gradient(135deg, #364ec7 0%, #89992c 100%);
+    background: linear-gradient(135deg, #364ec7 0%, #4a63ff 100%);
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.nav-link.premium {
+    background-color: #ffd700;
+    color: #000 !important;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    margin-left: 1rem;
+}
+
+.user-section {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.auth-link {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-name {
+    color: white;
+    font-weight: 500;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.btn-logout {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: white;
+    color: #364ec7;
+}

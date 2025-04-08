@@ -1,15 +1,15 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="inicio" routerLinkActive="active">
-            <img src="toogle.png" alt="" width="120" height="72">
+            <img src="toogle.png" alt="Toogle Logo" width="120" height="72">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="inicio" routerLinkActive="active">Inicio</a>
+                    <a class="nav-link" routerLink="inicio" routerLinkActive="active">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="likes" routerLinkActive="active">Likes</a>
@@ -18,30 +18,23 @@
                     <a class="nav-link" routerLink="comentarios" routerLinkActive="active">Comentarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="roles" routerLinkActive="active">Roles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="login" routerLinkActive="active">Iniciar Sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="registro" routerLinkActive="active">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="premium" routerLinkActive="active">Toogle Premium</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" routerLink="publicar" routerLinkActive="active">Publicar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link premium" routerLink="premium" routerLinkActive="active">Toogle Premium</a>
                 </li>
             </ul>
 
-            <div *ngIf="uid">
-                <p>{{ displayName }}</p>
-            </div>
-            <div *ngIf="photoURL">
-                <img [src]="photoURL" alt="Foto de perfil" width="50" height="50" routerLink="perfil" />
+            <div class="user-section" *ngIf="!uid">
+                <a class="nav-link auth-link" routerLink="login">Iniciar Sesión</a>
+                <a class="nav-link auth-link" routerLink="registro">Registrarse</a>
             </div>
 
-            <button (click)="logOut()">Cerrar sesion</button>
+            <div class="user-profile" *ngIf="uid">
+                <span class="user-name">{{ displayName }}</span>
+                <img *ngIf="photoURL" [src]="photoURL" alt="Foto de perfil" class="profile-pic" routerLink="perfil" />
+                <button class="btn-logout" (click)="logOut()">Cerrar sesión</button>
+            </div>
         </div>
     </div>
 </nav>
