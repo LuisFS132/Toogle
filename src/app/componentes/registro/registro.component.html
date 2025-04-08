@@ -7,6 +7,14 @@
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-container">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Enter your username" formControlName="username">
+                    <mat-error *ngIf="form.get('username')?.hasError('required')">Username is required</mat-error>
+                    <mat-error *ngIf="form.get('username')?.hasError('username')">Please enter a username</mat-error>
+                </mat-form-field>
+
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Enter your email" formControlName="email">
