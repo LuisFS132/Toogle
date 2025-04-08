@@ -1,0 +1,6 @@
+<div *ngIf="uid">
+    <p><strong>UID:</strong> {{ uid }}</p>
+    <p><strong>Nombre:</strong> {{ displayName }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <img *ngIf="photoURL" [src]="photoURL" alt="Foto de perfil" />
+</div>

@@ -31,6 +31,13 @@
                 </li>
             </ul>
 
+            <div *ngIf="uid">
+                <p>{{ displayName }}</p>
+            </div>
+            <div *ngIf="photoURL">
+                <img [src]="photoURL" alt="Foto de perfil" width="50" height="50" routerLink="perfil" />
+            </div>
+
             <button (click)="logOut()">Cerrar sesion</button>
         </div>
     </div>

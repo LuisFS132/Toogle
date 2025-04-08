@@ -2,14 +2,20 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthGoogleService } from '../../servicios/auth-google.service';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navegacion',
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './navegacion.component.html',
   styleUrl: './navegacion.component.css'
 })
 export class NavegacionComponent {
+
+  uid: string | null = null;
+  displayName: string | null = null;
+  photoURL: string | null = null;
 
   AuthGoogleService = inject(AuthGoogleService); // inyecta el servicio de autenticacion
 
@@ -24,4 +30,13 @@ export class NavegacionComponent {
 
   } // fin de la funcion logOut
 
+  constructor(public afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.uid = user.uid;
+        this.displayName = user.displayName;
+        this.photoURL = user.photoURL;
+      }
+    });
+  }
 }
