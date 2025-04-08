@@ -1,20 +1,31 @@
-<div>
-    {{formProducto.value|json}}
-</div>
-
-<form #formProducto="ngForm" align="center">
-
-    <!-- 
-        Diseñar el formulario para recoger la información de un producto
-        nombre, descripcion, precio, cantidad
-     -->
-
-    <div class="mb-3" align="center">
-        <div class="col-sm-4">
-            <label for="content" class="form-label">¿Qué estas pensando? </label>
-            <input type="text" class="form-control" id="content" name="content" ngModel placeholder="Publicación">
+<div class="post-container">
+    <form #formProducto="ngForm">
+        <div class="post-header">
+            <img [src]="photoURL || 'assets/default-avatar.png'" alt="Profile" class="profile-pic">
+            <span class="user-name">{{displayName || 'Usuario'}}</span>
         </div>
-    </div>
 
-    <button class="button" type="button" (click)="guardar(formProducto.value)">Guardar</button>
-</form>
+        <div class="post-content">
+            <textarea class="content-input" id="content" name="content" ngModel placeholder="¿Qué estás pensando?" rows="3"></textarea>
+
+            <div class="file-upload-container" *ngIf="!selectedFile">
+                <label for="image" class="file-upload-label">
+          <i class="fas fa-image"></i>
+          Agregar imagen
+        </label>
+                <input type="file" class="file-input" id="image" (change)="onFileSelected($event)" accept="image/*">
+            </div>
+
+            <div class="selected-file" *ngIf="selectedFile">
+                <span>{{selectedFile.name}}</span>
+                <button type="button" class="remove-file" (click)="selectedFile = null">×</button>
+            </div>
+        </div>
+
+        <div class="post-actions">
+            <button class="post-button" type="button" (click)="guardar(formProducto.value)">
+        Publicar
+      </button>
+        </div>
+    </form>
+</div>

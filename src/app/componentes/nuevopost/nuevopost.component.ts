@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from './post';
 import { InicioToService } from '../../servicios/inicio-to.service';
 import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nuevopost',
-  imports: [FormsModule, JsonPipe, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './nuevopost.component.html',
   styleUrl: './nuevopost.component.css'
 })
@@ -41,18 +40,23 @@ export class NuevopostComponent {
   }
 
   guardar(valores : any){
-
-    console.log(valores.nombre);
-
-    let objetoPost = new Post(valores.uid,valores.content, valores.image_url);
-
-    this._service.nuevoPost(objetoPost).subscribe(
-
-    (respuesta)=>{
-      this.resp = respuesta;
-      console.log("Respuesta: "+ this.resp["result"]["comment"]);
+    if (!this.uid) {
+      console.error('Usuario no autenticado');
+      return;
     }
 
+    let image_filename = '';
+    if (this.selectedFile) {
+      image_filename = this.selectedFile.name;
+    }
+
+    let objetoPost = new Post(this.uid!, valores.content, image_filename);
+    this._service.nuevoPost(objetoPost).subscribe(
+      (respuesta)=>{
+        this.resp = respuesta;
+        console.log("Respuesta: "+ this.resp["result"]["comment"]);
+        this.selectedFile = null;
+      }
     );
   }
 }
