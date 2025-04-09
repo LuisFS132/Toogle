@@ -43,8 +43,11 @@
                                 </button>
                             </div>
                             <div>
-                                <button class="btn btn-light btn-sm me-2" (click)="darMeGusta(post.id)">
-                                    <i class="fas fa-heart"></i> Me gusta ({{post.likes || 0}})
+                                <button 
+                                class="btn btn-light btn-sm me-2" 
+                                [disabled]="post.likedBy.includes(uid)" 
+                                (click)="darMeGusta(post.id)">
+                                <i class="fas fa-heart"></i> Me gusta ({{post.likes || 0}})
                                 </button>
                                 <button class="btn btn-light btn-sm" (click)="comentar(post.id, comentarioInput.value); comentarioInput.value=''">
                                     <i class="fas fa-comment"></i> Comentar

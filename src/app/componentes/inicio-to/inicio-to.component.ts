@@ -36,7 +36,8 @@ export class InicioToComponent implements OnInit {
         this.posts = this.resp["result"].map((post: any) => ({
           ...post,
           likes: post.likes || 0,
-          comments: post.comments || []
+          comments: post.comments || [],
+          likedBy: post.likedBy || [] // Agregar propiedad para rastrear "Me gusta"
         }));
         console.log(this.posts);
       }
@@ -56,7 +57,12 @@ export class InicioToComponent implements OnInit {
   darMeGusta(postId: number): void {
     const post = this.posts.find(p => p.id === postId);
     if (post) {
+      if (post.likedBy.includes(this.uid)) {
+        console.log(`El usuario ${this.uid} ya dio "Me gusta" a este post.`);
+        return; // Evitar que el usuario dé "Me gusta" más de una vez
+      }
       post.likes = (post.likes || 0) + 1; // Incrementar el contador de "Me gusta"
+      post.likedBy.push(this.uid); // Registrar que el usuario dio "Me gusta"
       console.log(`Post ${postId} recibió un "Me gusta". Total: ${post.likes}`);
     }
   }
