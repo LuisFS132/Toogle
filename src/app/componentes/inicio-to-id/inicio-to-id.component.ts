@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { InicioToService } from '../../servicios/inicio-to.service';
 import { CommonModule } from '@angular/common';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-inicio-to-id',
@@ -13,12 +14,24 @@ import { CommonModule } from '@angular/common';
 export class InicioToIdComponent implements OnInit{
   resultado: any[] = [];
   resp: any = {};
+  uid: string | null = null;
+  displayName: string | null = null;
+  email: string | null = null;
+  photoURL: string | null = null;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _servPosts: InicioToService,
-    private _router: Router
-  ){}
+    private _router: Router,
+    public afAuth: AngularFireAuth
+  ){this.afAuth.authState.subscribe(user => {
+    if (user) {
+      this.uid = user.uid;
+      this.displayName = user.displayName;
+      this.email = user.email;
+      this.photoURL = user.photoURL;
+    }
+  });}
 
   ngOnInit(): void {
     this._activatedRoute.params.subscribe(params => {

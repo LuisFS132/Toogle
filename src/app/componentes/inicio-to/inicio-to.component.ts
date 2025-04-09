@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InicioToService } from '../../servicios/inicio-to.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-inicio-to',
@@ -13,8 +14,20 @@ import { CommonModule } from '@angular/common';
 export class InicioToComponent implements OnInit {
   resp: any = {};
   posts: any[] = [];
+  uid: string | null = null;
+  displayName: string | null = null;
+  email: string | null = null;
+  photoURL: string | null = null;
 
-  constructor(private _servPosts: InicioToService, private _router: Router) {}
+
+  constructor(private _servPosts: InicioToService, private _router: Router, public afAuth: AngularFireAuth) {this.afAuth.authState.subscribe(user => {
+    if (user) {
+      this.uid = user.uid;
+      this.displayName = user.displayName;
+      this.email = user.email;
+      this.photoURL = user.photoURL;
+    }
+  });}
 
   ngOnInit(): void {
     this._servPosts.getAllPosts().subscribe(
