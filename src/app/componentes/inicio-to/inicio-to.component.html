@@ -43,15 +43,30 @@
                                 </button>
                             </div>
                             <div>
-                                <button class="btn btn-light btn-sm me-2">
-                                    <i class="fas fa-heart"></i> Me gusta
+                                <button class="btn btn-light btn-sm me-2" (click)="darMeGusta(post.id)">
+                                    <i class="fas fa-heart"></i> Me gusta ({{post.likes || 0}})
                                 </button>
-                                <button class="btn btn-light btn-sm">
+                                <button class="btn btn-light btn-sm" (click)="comentar(post.id, comentarioInput.value); comentarioInput.value=''">
                                     <i class="fas fa-comment"></i> Comentar
                                 </button>
                             </div>
                         </div>
+
+                        <!-- Sección para mostrar comentarios -->
+                        <div class="mt-3">
+                            <h6>Comentarios:</h6>
+                            <ul class="list-group">
+                                <li *ngFor="let comment of post.comments" class="list-group-item">
+                                    {{ comment }}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Campo para escribir un nuevo comentario -->
+                <div class="mt-3">
+                    <input type="text" #comentarioInput class="form-control mb-2" placeholder="Escribe un comentario">
                 </div>
                 }
 

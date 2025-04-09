@@ -33,7 +33,11 @@ export class InicioToComponent implements OnInit {
     this._servPosts.getAllPosts().subscribe(
       (respuesta) => {
         this.resp = respuesta;
-        this.posts = this.resp["result"];
+        this.posts = this.resp["result"].map((post: any) => ({
+          ...post,
+          likes: post.likes || 0,
+          comments: post.comments || []
+        }));
         console.log(this.posts);
       }
     );
@@ -47,5 +51,22 @@ export class InicioToComponent implements OnInit {
 
   verPost(idx: number) {
     this._router.navigate(['/buscar-post', idx]);
+  }
+
+  darMeGusta(postId: number): void {
+    const post = this.posts.find(p => p.id === postId);
+    if (post) {
+      post.likes = (post.likes || 0) + 1; // Incrementar el contador de "Me gusta"
+      console.log(`Post ${postId} recibió un "Me gusta". Total: ${post.likes}`);
+    }
+  }
+  
+  comentar(postId: number, comentario: string): void {
+    const post = this.posts.find(p => p.id === postId);
+    if (post && comentario.trim()) {
+      post.comments = post.comments || [];
+      post.comments.push(comentario); // Agregar el comentario al post
+      console.log(`Comentario agregado al post ${postId}: ${comentario}`);
+    }
   }
 }
