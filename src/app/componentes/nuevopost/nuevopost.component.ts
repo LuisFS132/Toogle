@@ -4,6 +4,7 @@ import { InicioToService } from '../../servicios/inicio-to.service';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nuevopost',
@@ -18,7 +19,7 @@ export class NuevopostComponent {
   displayName: string | null = null;
   photoURL: string | null = null;
 
-  constructor(private _service : InicioToService, private afAuth: AngularFireAuth)
+  constructor(private _service : InicioToService, private afAuth: AngularFireAuth, private router: Router)
   {this.afAuth.authState.subscribe(user => {
     if (user) {
       this.uid = user.uid;
@@ -39,7 +40,7 @@ export class NuevopostComponent {
     }
   }
 
-  guardar(valores : any){
+  async guardar(valores : any){
     if (!this.uid) {
       console.error('Usuario no autenticado');
       return;
@@ -56,6 +57,9 @@ export class NuevopostComponent {
         this.resp = respuesta;
         console.log("Respuesta: "+ this.resp["result"]["comment"]);
         this.selectedFile = null;
+        this.router.navigate(['/inicio']).then(() => {
+          window.location.reload();
+        });
       }
     );
   }
