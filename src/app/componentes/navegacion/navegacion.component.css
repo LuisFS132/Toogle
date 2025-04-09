@@ -42,9 +42,28 @@ nav.navbar {
     gap: 1rem;
 }
 
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.profile-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .user-name {
     color: white;
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.profile-link:hover .user-name {
+    text-decoration: underline;
 }
 
 .profile-pic {
@@ -52,7 +71,12 @@ nav.navbar {
     height: 40px;
     border-radius: 50%;
     border: 2px solid white;
-    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-link:hover .profile-pic {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .btn-logout {

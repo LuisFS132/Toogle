@@ -31,9 +31,10 @@
             </div>
 
             <div class="user-profile" *ngIf="uid">
-                <span class="user-name">{{ displayName }}</span>
-                <img *ngIf="photoURL" [src]="photoURL" alt="Foto de perfil" class="profile-pic" routerLink="perfil" />
-                <button class="btn-logout" (click)="logOut()">Cerrar sesión</button>
+                <div class="profile-link" routerLink="perfil">
+                    <span class="user-name">{{ displayName }}</span>
+                    <img *ngIf="photoURL" [src]="photoURL" alt="Foto de perfil" class="profile-pic" />
+                </div>
             </div>
         </div>
     </div>

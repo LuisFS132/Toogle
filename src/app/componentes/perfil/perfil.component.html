@@ -1,6 +1,16 @@
-<div *ngIf="uid">
-    <p><strong>UID:</strong> {{ uid }}</p>
-    <p><strong>Nombre:</strong> {{ displayName }}</p>
-    <p><strong>Email:</strong> {{ email }}</p>
-    <img *ngIf="photoURL" [src]="photoURL" alt="Foto de perfil" />
+<div class="profile-container" *ngIf="uid">
+    <div class="profile-card">
+        <div class="profile-header">
+            <img *ngIf="photoURL" [src]="photoURL" alt="Foto de perfil" class="profile-image" />
+            <h2 class="profile-name">{{ displayName }}</h2>
+            <p class="profile-email">{{ email }}</p>
+        </div>
+        <div class="profile-details">
+            <div class="detail-item">
+                <label>ID de Usuario:</label>
+                <span>{{ uid }}</span>
+            </div>
+        </div>
+        <button class="btn-logout" (click)="logOut()">Cerrar sesión</button>
+    </div>
 </div>
