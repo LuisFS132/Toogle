@@ -8,6 +8,9 @@
         <div class="post-content">
             <textarea class="content-input" id="content" name="content" ngModel placeholder="¿Qué estás pensando?" rows="3"></textarea>
 
+            <!-- Hidden input for uid with proper binding -->
+            <input type="hidden" name="uid" [(ngModel)]="uid">
+
             <div class="file-upload-container" *ngIf="!selectedFile">
                 <label for="image" class="file-upload-label">
           <i class="fas fa-image"></i>

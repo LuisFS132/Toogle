@@ -1,4 +1,3 @@
-import { NuevopostComponent } from "./nuevopost.component";
 export class Post{
 
     constructor(

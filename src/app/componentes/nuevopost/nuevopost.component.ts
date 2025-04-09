@@ -51,7 +51,7 @@ export class NuevopostComponent {
       image_filename = this.selectedFile.name;
     }
 
-    let objetoPost = new Post(this.uid!, valores.content, image_filename);
+    let objetoPost = new Post(this.uid, valores.content, image_filename);
     this._service.nuevoPost(objetoPost).subscribe(
       (respuesta)=>{
         this.resp = respuesta;
