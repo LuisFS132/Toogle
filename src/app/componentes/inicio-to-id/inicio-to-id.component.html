@@ -1,23 +1,55 @@
-<div class="row">
-    <div class="col">
-        <h2>Resultados de la búsqueda</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col" *ngFor="let post of resultado">
-                <div class="card h-100">
+<div class="container-fluid py-4 bg-light min-vh-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <button class="btn btn-link text-decoration-none mb-4" (click)="regresar()">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </button> @for (post of resultado; track post.id) {
+                <div class="card shadow-lg border-0 rounded-3 overflow-hidden">
+                    <div class="card-header bg-white border-0 d-flex align-items-center py-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{post.user_id}}" class="rounded-circle me-3" alt="avatar" style="width: 48px; height: 48px">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Usuario #{{post.user_id}}</h5>
+                            <small class="text-muted">{{post.created_at | date:'full'}}</small>
+                        </div>
+                    </div>
+
+                    @if (post.image_url) {
+                    <img [src]="post.image_url" class="card-img-top" alt="Post image" style="max-height: 500px; object-fit: cover;"> }
+
                     <div class="card-body">
-                        <h5 class="card-title">Usuario: {{post.user_id}}</h5>
-                        <p class="card-text">{{post.content}}</p>
-                        @if (post.image_url) {
-                        <img [src]="post.image_url" class="card-img-top" alt="Post image"> }
-                        <p class="card-text"><small class="text-muted">{{post.created_at}}</small></p>
-                        <button class="btn btn-primary" (click)="regresar()">Regresar</button>
+                        <p class="card-text fs-5">{{post.content}}</p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="d-flex gap-3">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-heart"></i> Me gusta
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-share"></i> Compartir
+                                </button>
+                            </div>
+                            <div>
+                                <span class="text-muted">
+                                    <i class="fas fa-eye"></i> 0 vistas
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+                <div *ngIf="!resultado || resultado.length === 0" class="card shadow text-center py-5">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <h4>No se encontraron resultados</h4>
+                        <p class="text-muted">Intenta con otra búsqueda</p>
+                        <button class="btn btn-primary" (click)="regresar()">
+                            Volver al inicio
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div *ngIf="!resultado || resultado.length === 0" class="alert alert-info mt-3">
-            No se encontraron posts
         </div>
     </div>
 </div>
