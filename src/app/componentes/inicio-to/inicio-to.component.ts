@@ -37,7 +37,7 @@ export class InicioToComponent implements OnInit {
           ...post,
           likes: post.likes || 0,
           comments: post.comments || [],
-          likedBy: post.likedBy || [] // Agregar propiedad para rastrear "Me gusta"
+          likedBy: post.likedBy || [] 
         }));
         console.log(this.posts);
       }
@@ -59,10 +59,10 @@ export class InicioToComponent implements OnInit {
     if (post) {
       if (post.likedBy.includes(this.uid)) {
         console.log(`El usuario ${this.uid} ya dio "Me gusta" a este post.`);
-        return; // Evitar que el usuario dé "Me gusta" más de una vez
+        return; 
       }
-      post.likes = (post.likes || 0) + 1; // Incrementar el contador de "Me gusta"
-      post.likedBy.push(this.uid); // Registrar que el usuario dio "Me gusta"
+      post.likes = (post.likes || 0) + 1; 
+      post.likedBy.push(this.uid); 
       console.log(`Post ${postId} recibió un "Me gusta". Total: ${post.likes}`);
     }
   }
@@ -71,7 +71,7 @@ export class InicioToComponent implements OnInit {
     const post = this.posts.find(p => p.id === postId);
     if (post && comentario.trim()) {
       post.comments = post.comments || [];
-      post.comments.push(comentario); // Agregar el comentario al post
+      post.comments.push(comentario); 
       console.log(`Comentario agregado al post ${postId}: ${comentario}`);
     }
   }
